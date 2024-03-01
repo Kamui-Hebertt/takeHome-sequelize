@@ -4,7 +4,7 @@ import sequelize from '../config/database';
 class User extends Model {
   public id!: number;
   public email!: string;
-  public username!: string; // Add username field
+  public username!: string; 
   public password!: string; 
 }
 
@@ -23,7 +23,7 @@ User.init({
     },
   },
   username: {
-    type: DataTypes.STRING, // Define username field
+    type: DataTypes.STRING, 
     allowNull: false,
     unique: true,
   },

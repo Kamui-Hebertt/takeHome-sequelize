@@ -1,4 +1,3 @@
-// src/routes/productRoutes.ts
 import { Router } from 'express';
 import { getAllProducts, getProductById, createProduct, updateProduct, deleteProduct } from '../controllers/ProductController';
 
