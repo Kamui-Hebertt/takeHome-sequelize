@@ -1,16 +1,28 @@
 import { Sequelize } from 'sequelize';
+import dotenv from 'dotenv';
 
-// Use dotenv to load environment variables from .env file
-require('dotenv').config();
+dotenv.config();
 
-// Extract the PostgreSQL URL from the environment variables
-const postgresUrl = process.env.POSTGRES_URL;
-
-if (!postgresUrl) {
-  throw new Error('POSTGRES_URL is not defined in the environment variables');
-}
-
-// Create a new Sequelize instance using the PostgreSQL URL
-const sequelize = new Sequelize(postgresUrl);
+const sequelize = new Sequelize(
+  process.env.POSTGRES_DATABASE || "elitypescript",
+  process.env.POSTGRES_USER || "eli",
+  process.env.POSTGRES_PASSWORD || "",
+  {
+    host: process.env.POSTGRES_HOST || "localhost",
+    dialect: "postgres",
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false // You may need to set this to true in production
+      }
+    },
+    pool: {
+      max: 100,
+      min: 0,
+      idle: 200000,
+      acquire: 1000000,
+    },
+  }
+);
 
 export default sequelize;

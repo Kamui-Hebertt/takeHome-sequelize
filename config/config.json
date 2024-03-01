@@ -1,17 +1,26 @@
 {
   "development": {
     "dialect": "postgres",
-    "url": "postgres://default:Bm12aAKeMrVY@ep-wild-mountain-a4ro0mm6-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require",
-    "ssl": true,
+    "username": "default",
+    "password": "Bm12aAKeMrVY",
+    "host": "ep-wild-mountain-a4ro0mm6-pooler.us-east-1.aws.neon.tech",
+    "port": 5432,
+    "database": "verceldb",
+    "ssl": false,
     "dialectOptions": {
       "ssl": {
-        "require": true,
+        "require": false,
         "rejectUnauthorized": false
-      }}
+      }
+    }
   },
   "test": {
     "dialect": "postgres",
-    "url": "postgres://default:Bm12aAKeMrVY@ep-wild-mountain-a4ro0mm6-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require",
+    "username": "default",
+    "password": "Bm12aAKeMrVY",
+    "host": "ep-wild-mountain-a4ro0mm6-pooler.us-east-1.aws.neon.tech",
+    "port": 5432,
+    "database": "verceldb",
     "ssl": true,
     "dialectOptions": {
       "ssl": {
@@ -22,13 +31,18 @@
   },
   "production": {
     "dialect": "postgres",
-    "url": "postgres://default:Bm12aAKeMrVY@ep-wild-mountain-a4ro0mm6-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require",
-    "ssl": true,
+    "username": "default",
+    "password": "Bm12aAKeMrVY",
+    "host": "ep-wild-mountain-a4ro0mm6-pooler.us-east-1.aws.neon.tech",
+    "port": 5432,
+    "database": "verceldb",
+    "ssl": false,
     "dialectOptions": {
       "ssl": {
-        "require": true,
+        "require": false,
         "rejectUnauthorized": false
       }
     }
   }
 }
+
