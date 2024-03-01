@@ -1,24 +1,20 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors'; // Import the cors package
 import authRoutes from './routes/authRoutes';
 import productRoutes from './routes/productRoutes';
 import { verifyToken } from './middleware/authMiddleware';
+
 dotenv.config();
 
 const app = express();
 
 app.use(express.json());
 
-const disableCorsForRoute = (req: Request, res: Response, next: NextFunction) => {
+// Enable CORS for all routes
+app.use(cors());
 
-  res.set('Access-Control-Allow-Origin', '*');
-
-  res.set('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-};
-
-
-app.use('/api/auth', disableCorsForRoute, authRoutes);
+app.use('/api/auth', authRoutes);
 app.use('/api/products', verifyToken, productRoutes);
 
 const PORT = process.env.PORT || 3334;
