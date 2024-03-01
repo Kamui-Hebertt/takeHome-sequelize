@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import User from '../models/User';
 import validator from 'validator';
+import { verifyToken } from '../middleware/authMiddleware';
 
 export const register = async (req: Request, res: Response) => {
   try {
@@ -62,4 +63,19 @@ export const login = async (req: Request, res: Response) => {
     console.error('Error logging in user:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
+
+
 };
+
+
+export const someProtectedRouteHandler = async (req: Request, res: Response) => {
+  try {
+
+    verifyToken(req, res, () => {
+  
+      res.json({ message: 'Authenticated user accessing protected route' });
+    });
+  } catch (error) {
+    console.error('Error handling protected route:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }}
