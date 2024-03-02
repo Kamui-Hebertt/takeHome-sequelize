@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import Product from '../models/Product';
 
 interface ProductDetails {
+  id: number;
   name: string;
   brand: string;
   model: string;
@@ -18,6 +19,7 @@ const formatProductDetails = (product: ProductDetails | string | number) => {
   
 
   return {
+    id:  product.id,
     name: product.name,
     details: {
       brand: product.brand,
@@ -68,7 +70,7 @@ export const getProductById = async (req: Request, res: Response) => {
 
     
     const product = await Product.findByPk(productId);
-
+    console.log(product);
 
     if (!product) {
       return res.status(404).json({ error: 'Product not found' });
