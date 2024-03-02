@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Your application description",
   "main": "index.js",
-
+  "type":"module",
 
   "scripts": {
     "start": "ts-node src/app.ts",
