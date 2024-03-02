@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "Your application description",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "ts-node src/app.ts",
     "dev": "nodemon --exec ts-node src/app.ts"
   },
+  
   "dependencies": {
     "@types/node": "^20.11.24",
     "bcrypt": "^5.1.1",
